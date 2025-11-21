@@ -1,7 +1,8 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Shared;
+using Shared.Commands;
+
 
 var builder = Host.CreateApplicationBuilder(args);
 
@@ -24,15 +25,16 @@ applicationLifetimeService?.ApplicationStarted.Register(async void (_, _) =>
 {
     var bus = host.Services.GetService<IBus>();
 
-    var submitOrderMessage = new SubmitOrder { OrderId = "123" };
+    var processOrderMessage = new ProcessOrder { OrderId = "1" };
 
     if (bus is not null)
     {
-        //awaiting some time so that the bus of the OrderService and InventoryService is started already so that the ReceiveEndpoints are created before message is published(for the first time). Else the message will be lost. 
+
+        //awaiting some time so that the bus of the ApplicationA and ApplicationB is started already so that the ReceiveEndpoints are created before message is published(for the first time). Else the message will be lost. 
         await Task.Delay(5000);
 
-        await bus.Publish(submitOrderMessage);
-        Console.WriteLine("SubmitOrder Message is published");
+        await bus.Publish(processOrderMessage);
+        Console.WriteLine("ProcessOrder Message is published");
     }
 }, null);
 
