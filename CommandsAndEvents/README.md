@@ -1,4 +1,4 @@
-﻿# OpenTransit Basic Example
+﻿# OpenTransit Commands and Events Example
 
 This repository provides an Example of using [Commands And Events](https://opentransitlab.github.io/OpenTransit/docs/patterns/commands-and-events/overview.html) in a distributed system.  
 Currently, the sample uses **RabbitMQ** as the message broker, but we plan to add examples for other brokers in the future.
