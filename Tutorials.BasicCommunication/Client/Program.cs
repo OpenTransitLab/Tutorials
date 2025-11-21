@@ -28,6 +28,9 @@ applicationLifetimeService?.ApplicationStarted.Register(async void (_, _) =>
 
     if (bus is not null)
     {
+        //awaiting some time so that the bus of the OrderService and InventoryService is started already so that the ReceiveEndpoints are created before message is published(for the first time). Else the message will be lost. 
+        await Task.Delay(5000);
+
         await bus.Publish(submitOrderMessage);
         Console.WriteLine("SubmitOrder Message is published");
     }

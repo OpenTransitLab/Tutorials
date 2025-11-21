@@ -1,6 +1,6 @@
-﻿# MassTransit Basic Example
+﻿# OpenTransit Basic Example
 
-This repository provides a **basic example of using MassTransit** in a distributed system.  
+This repository provides a **basic example of using OpenTransit** in a distributed system.  
 Currently, the sample uses **RabbitMQ** as the message broker, but we plan to add examples for other brokers in the future.
 
 ---
